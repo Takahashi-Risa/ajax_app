@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   # end
 
   def create
-    binding.pry
+    # binding.pry
     post = Post.create(content: params[:content])
     # redirect_to action: :index  # 追記 #renderメソッドでJSONを指定に書き換え
     render json:{ post: post }
