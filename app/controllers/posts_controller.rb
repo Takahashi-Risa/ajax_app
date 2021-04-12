@@ -1,13 +1,18 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.order(id: "DESC")
   end
 
-  def new
-  end
+  # コメントアウトする
+  # def new
+  # end
 
   def create
-    Post.create(content: params[:content])
+    # binding.pry
+    post = Post.create(content: params[:content])
+    # redirect_to action: :index  # 追記 #renderメソッドでJSONを指定に書き換え
+    render json:{ post: post }
   end
+
 end
